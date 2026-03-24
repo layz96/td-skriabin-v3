@@ -67,30 +67,54 @@ export default function HeroSlider() {
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0, x: 30 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <h1 className="text-[48px] lg:text-[64px] font-semibold text-white leading-[1.05] mb-6">
-                <span className="text-brand-accent">{slide.accent}</span>
+                <motion.span
+                  className="text-brand-accent inline-block"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                >
+                  {slide.accent}
+                </motion.span>
                 <br />
                 {slide.title.split("\n").map((line, i) => (
-                  <span key={i}>
+                  <motion.span
+                    key={i}
+                    className="inline-block"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  >
                     {line}
                     {i < slide.title.split("\n").length - 1 && <br />}
-                  </span>
+                  </motion.span>
                 ))}
               </h1>
-              <p className="text-neutral-400 text-lg mb-8 max-w-[480px] leading-relaxed">
+              <motion.p
+                className="text-neutral-400 text-lg mb-8 max-w-[480px] leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
                 {slide.description}
-              </p>
-              <Link href={slide.href} className="btn-primary">
-                {slide.cta}
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <Link href={slide.href} className="btn-primary link-animated">
+                  {slide.cta}
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
 
@@ -98,10 +122,10 @@ export default function HeroSlider() {
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ duration: 0.4 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="hidden lg:block relative"
             >
               <div className="relative w-full aspect-[4/3] max-w-[540px] ml-auto rounded-2xl overflow-hidden">

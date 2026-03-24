@@ -74,3 +74,120 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #a67850;
 }
+
+/* ========================================
+   FOAMLINE-STYLE ANIMATIONS
+   ======================================== */
+
+/* Fade in + scale for hero model */
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Slide up from bottom */
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide from left */
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Slide from right */
+@keyframes slideFromRight {
+  0% { opacity: 0; transform: translateX(40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Gradient button shimmer */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Product card hover transitions */
+.catalog-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.catalog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.catalog-card:hover img {
+  transform: scale(1.05);
+  transition: transform 0.6s ease;
+}
+
+/* Button gradient animation */
+.btn-gradient {
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-gradient:hover {
+  background-position: 100% 50%;
+}
+
+/* Link hover effect */
+.link-animated {
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+.link-animated svg {
+  transition: transform 0.2s ease;
+}
+.link-animated:hover svg {
+  transform: translateX(4px);
+}
+
+/* Brand card grayscale hover */
+.brand-card {
+  filter: grayscale(0.5);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.2s ease;
+}
+.brand-card:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Stats number counter animation */
+.stat-number {
+  transition: all 0.3s ease;
+}
+
+/* Scroll indicator bounce */
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+.scroll-indicator {
+  animation: bounceDown 2s ease-in-out infinite;
+}
+
+/* Section reveal classes */
+.reveal-up {
+  animation: slideUp 0.6s ease forwards;
+}
+.reveal-left {
+  animation: slideFromLeft 0.6s ease forwards;
+}
+.reveal-right {
+  animation: slideFromRight 0.6s ease forwards;
+}
+.reveal-fade {
+  animation: fadeInScale 0.4s ease forwards;
+}
+
+/* Badge pulse */
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.badge-pulse {
+  animation: badgePulse 2s ease-in-out 1;
+}

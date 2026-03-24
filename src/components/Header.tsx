@@ -47,7 +47,7 @@ export default function Header() {
         <div className="bg-brand-dark">
           <div className="container-main flex items-center justify-between h-[90px]">
             {/* Logo */}
-            <Link href="/td-skriabin-v3" className="flex items-center gap-3 shrink-0">
+            <Link href="/td-skriabin-v3" className="flex items-center gap-3 shrink-0 transition-transform duration-200 hover:scale-[1.02]">
               <div className="w-[48px] h-[48px] rounded-full bg-brand-accent flex items-center justify-center">
                 <span className="text-white font-bold text-xl">CK</span>
               </div>
@@ -69,7 +69,7 @@ export default function Header() {
                   placeholder="Поиск по каталогу..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full h-[44px] bg-white/10 border border-white/20 rounded-btn px-4 pr-10 text-white placeholder:text-neutral-400 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+                  className="w-full h-[44px] bg-white/10 border border-white/20 rounded-btn px-4 pr-10 text-white placeholder:text-neutral-400 text-sm focus:outline-none focus:border-brand-accent transition-colors duration-200"
                 />
                 <svg
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400"
@@ -133,7 +133,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1.5 px-4 py-2 text-sm text-neutral-300 hover:text-brand-accent transition-colors duration-200 font-medium"
+                  className="flex items-center gap-1.5 px-4 py-2 text-sm text-neutral-300 hover:text-brand-accent transition-all duration-200 font-medium border-b-2 border-transparent hover:border-brand-accent/50"
                 >
                   {item.label}
                   {item.hasDropdown && (

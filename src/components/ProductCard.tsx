@@ -9,23 +9,23 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={`/td-skriabin-v3/product/${product.slug}`}
-      className="group bg-white border border-neutral-100 hover:border-brand-accent/30 transition-all duration-200 hover:shadow-lg"
+      className="catalog-card group bg-white border border-neutral-100 hover:border-brand-accent/30 hover:shadow-lg block"
     >
       <div className="relative aspect-square overflow-hidden bg-brand-light">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-[0.4s] group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-[0.6s] group-hover:scale-105"
         />
         {product.inStock && (
-          <span className="absolute top-3 left-3 bg-green-600 text-white text-xs px-2.5 py-1 rounded-full font-medium">
+          <span className="absolute top-3 left-3 bg-green-600 text-white text-xs px-2.5 py-1 rounded-full font-medium badge-pulse">
             В наличии
           </span>
         )}
       </div>
       <div className="p-4">
         <div className="text-xs text-neutral-400 mb-1">{product.brand}</div>
-        <h3 className="text-sm font-medium text-brand-text leading-snug mb-2 group-hover:text-brand-accent transition-colors line-clamp-2">
+        <h3 className="text-sm font-medium text-brand-text leading-snug mb-2 group-hover:text-brand-accent transition-colors duration-200 line-clamp-2">
           {product.name}
         </h3>
         <div className="flex items-baseline justify-between">

@@ -5,6 +5,8 @@ import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
 import CatalogGrid from "@/components/CatalogGrid";
 import RequestModal from "@/components/RequestModal";
+import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import { brands, products } from "@/data/products";
 
 const stats = [
@@ -45,34 +47,43 @@ export default function HomePage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
             {/* Left: Stats card */}
-            <div className="bg-brand-accent rounded-2xl p-10 flex flex-col justify-center">
-              <h2 className="text-[36px] lg:text-[40px] font-semibold text-white leading-tight mb-3">
-                Скрябин Керамикс
-              </h2>
-              <p className="text-white/80 text-base mb-8 max-w-[400px]">
-                Ваш надежный партнер в мире премиального клинкерного кирпича
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-                {stats.map((stat) => (
-                  <div key={stat.label}>
-                    <div className="text-3xl lg:text-4xl font-bold text-white mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-white/70 text-sm">{stat.label}</div>
-                  </div>
-                ))}
+            <ScrollReveal direction="left">
+              <div className="bg-brand-accent rounded-2xl p-10 flex flex-col justify-center h-full">
+                <h2 className="text-[36px] lg:text-[40px] font-semibold text-white leading-tight mb-3">
+                  Скрябин Керамикс
+                </h2>
+                <p className="text-white/80 text-base mb-8 max-w-[400px]">
+                  Ваш надежный партнер в мире премиального клинкерного кирпича
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                  {stats.map((stat) => {
+                    const numMatch = stat.value.match(/^(\d+)/);
+                    const num = numMatch ? parseInt(numMatch[1]) : 0;
+                    const suffix = stat.value.replace(/^\d+/, "");
+                    return (
+                      <div key={stat.label}>
+                        <div className="text-3xl lg:text-4xl font-bold text-white mb-1 stat-number">
+                          <AnimatedCounter value={num} suffix={suffix} duration={2} />
+                        </div>
+                        <div className="text-white/70 text-sm">{stat.label}</div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right: Large image */}
-            <div className="relative rounded-2xl overflow-hidden min-h-[400px]">
-              <img
-                src="/td-skriabin-v3/images/cat-brick.jpg"
-                alt="Клинкерный кирпич"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-            </div>
+            <ScrollReveal direction="right">
+              <div className="relative rounded-2xl overflow-hidden min-h-[400px]">
+                <img
+                  src="/td-skriabin-v3/images/cat-brick.jpg"
+                  alt="Клинкерный кирпич"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -80,24 +91,27 @@ export default function HomePage() {
       {/* Partners/Brands Section */}
       <section className="section-padding bg-white">
         <div className="container-main">
-          <h2 className="section-title mb-10 text-center">Наши партнеры</h2>
+          <ScrollReveal direction="up">
+            <h2 className="section-title mb-10 text-center">Наши партнеры</h2>
+          </ScrollReveal>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
-            {brands.map((brand) => (
-              <Link
-                key={brand.slug}
-                href={`/td-skriabin-v3/brands`}
-                className="group flex flex-col items-center justify-center p-6 border border-neutral-100 rounded-xl hover:border-brand-accent/30 hover:shadow-md transition-all duration-200"
-              >
-                <div className="w-16 h-16 rounded-full bg-brand-light flex items-center justify-center mb-3 group-hover:bg-brand-accent/10 transition-colors">
-                  <span className="text-brand-accent font-bold text-sm text-center leading-tight">
-                    {brand.name.split(" ")[0]}
+            {brands.map((brand, idx) => (
+              <ScrollReveal key={brand.slug} direction="up" delay={idx * 0.1}>
+                <Link
+                  href={`/td-skriabin-v3/brands`}
+                  className="brand-card group flex flex-col items-center justify-center p-6 border border-neutral-100 rounded-xl hover:border-brand-accent/30 hover:shadow-md"
+                >
+                  <div className="w-16 h-16 rounded-full bg-brand-light flex items-center justify-center mb-3 group-hover:bg-brand-accent/10 transition-colors duration-200">
+                    <span className="text-brand-accent font-bold text-sm text-center leading-tight">
+                      {brand.name.split(" ")[0]}
+                    </span>
+                  </div>
+                  <span className="text-sm font-medium text-brand-text text-center leading-tight">
+                    {brand.name}
                   </span>
-                </div>
-                <span className="text-sm font-medium text-brand-text text-center leading-tight">
-                  {brand.name}
-                </span>
-                <span className="text-xs text-neutral-400 mt-1">{brand.country}</span>
-              </Link>
+                  <span className="text-xs text-neutral-400 mt-1">{brand.country}</span>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -108,56 +122,58 @@ export default function HomePage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Completed projects */}
-            <div>
-              <h2 className="text-[28px] font-semibold text-brand-text mb-8">
-                Выполненные объекты
-              </h2>
-              <div className="space-y-4">
-                {completedProjects.map((item) => (
-                  <div
-                    key={item.title}
-                    className="group flex items-center gap-4 bg-white p-3 rounded-xl hover:shadow-md transition-all duration-200 cursor-pointer"
-                  >
-                    <div className="w-[80px] h-[60px] rounded-lg overflow-hidden shrink-0">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-brand-text group-hover:text-brand-accent transition-colors">
-                      {item.title}
-                    </span>
-                  </div>
-                ))}
+            <ScrollReveal direction="left">
+              <div>
+                <h2 className="text-[28px] font-semibold text-brand-text mb-8">
+                  Выполненные объекты
+                </h2>
+                <div className="space-y-4">
+                  {completedProjects.map((item, idx) => (
+                    <ScrollReveal key={item.title} direction="up" delay={idx * 0.1}>
+                      <div className="group flex items-center gap-4 bg-white p-3 rounded-xl hover:shadow-md transition-all duration-200 cursor-pointer">
+                        <div className="w-[80px] h-[60px] rounded-lg overflow-hidden shrink-0">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                        <span className="text-sm font-medium text-brand-text group-hover:text-brand-accent transition-colors duration-200">
+                          {item.title}
+                        </span>
+                      </div>
+                    </ScrollReveal>
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Articles */}
-            <div>
-              <h2 className="text-[28px] font-semibold text-brand-text mb-8">
-                Полезные статьи
-              </h2>
-              <div className="space-y-4">
-                {articles.map((item) => (
-                  <div
-                    key={item.title}
-                    className="group flex items-center gap-4 bg-white p-3 rounded-xl hover:shadow-md transition-all duration-200 cursor-pointer"
-                  >
-                    <div className="w-[80px] h-[60px] rounded-lg overflow-hidden shrink-0">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-brand-text group-hover:text-brand-accent transition-colors">
-                      {item.title}
-                    </span>
-                  </div>
-                ))}
+            <ScrollReveal direction="right">
+              <div>
+                <h2 className="text-[28px] font-semibold text-brand-text mb-8">
+                  Полезные статьи
+                </h2>
+                <div className="space-y-4">
+                  {articles.map((item, idx) => (
+                    <ScrollReveal key={item.title} direction="up" delay={idx * 0.1}>
+                      <div className="group flex items-center gap-4 bg-white p-3 rounded-xl hover:shadow-md transition-all duration-200 cursor-pointer">
+                        <div className="w-[80px] h-[60px] rounded-lg overflow-hidden shrink-0">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                        <span className="text-sm font-medium text-brand-text group-hover:text-brand-accent transition-colors duration-200">
+                          {item.title}
+                        </span>
+                      </div>
+                    </ScrollReveal>
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -169,21 +185,23 @@ export default function HomePage() {
           <div className="absolute bottom-10 right-[15%] w-24 h-24 border-2 border-white -rotate-6" />
         </div>
         <div className="container-main relative z-10 text-center">
-          <h2 className="text-[36px] lg:text-[44px] font-semibold text-white mb-4">
-            Нужна помощь с выбором?
-          </h2>
-          <p className="text-neutral-400 text-lg mb-6 max-w-[500px] mx-auto">
-            Наши специалисты помогут подобрать оптимальный материал для вашего проекта
-          </p>
-          <a
-            href="tel:+73452500600"
-            className="text-brand-accent text-3xl lg:text-4xl font-bold block mb-8 hover:text-brand-accent-light transition-colors"
-          >
-            +7 (3452) 500-600
-          </a>
-          <button onClick={() => setShowModal(true)} className="btn-primary text-base">
-            Получить консультацию
-          </button>
+          <ScrollReveal direction="fade">
+            <h2 className="text-[36px] lg:text-[44px] font-semibold text-white mb-4">
+              Нужна помощь с выбором?
+            </h2>
+            <p className="text-neutral-400 text-lg mb-6 max-w-[500px] mx-auto">
+              Наши специалисты помогут подобрать оптимальный материал для вашего проекта
+            </p>
+            <a
+              href="tel:+73452500600"
+              className="text-brand-accent text-3xl lg:text-4xl font-bold block mb-8 hover:text-brand-accent-light transition-colors duration-200"
+            >
+              +7 (3452) 500-600
+            </a>
+            <button onClick={() => setShowModal(true)} className="btn-primary text-base">
+              Получить консультацию
+            </button>
+          </ScrollReveal>
         </div>
       </section>
 
