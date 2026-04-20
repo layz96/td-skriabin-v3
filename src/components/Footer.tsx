@@ -1,21 +1,21 @@
 import Link from "next/link";
 
 const catalogLinks = [
-  { label: "Облицовочный кирпич", href: "/td-skriabin-v3/catalog/oblicovochnyj-kirpich" },
-  { label: "Клинкерная брусчатка", href: "/td-skriabin-v3/catalog/klinkernaya-bruschatka" },
-  { label: "Фасадная плитка", href: "/td-skriabin-v3/catalog/fasadnaya-plitka" },
-  { label: "Клинкерная черепица", href: "/td-skriabin-v3/catalog/klinkernaya-cherepica" },
-  { label: "Кирпич ручной формовки", href: "/td-skriabin-v3/catalog/kirpich-ruchnoj-formovki" },
-  { label: "Ригельный кирпич", href: "/td-skriabin-v3/catalog/rigelnyj-kirpich" },
-  { label: "Клинкерные ступени", href: "/td-skriabin-v3/catalog/klinkernye-stupeni" },
+  { label: "Облицовочный кирпич", href: "/catalog/oblicovochnyj-kirpich" },
+  { label: "Клинкерная брусчатка", href: "/catalog/klinkernaya-bruschatka" },
+  { label: "Фасадная плитка", href: "/catalog/fasadnaya-plitka" },
+  { label: "Клинкерная черепица", href: "/catalog/klinkernaya-cherepica" },
+  { label: "Кирпич ручной формовки", href: "/catalog/kirpich-ruchnoj-formovki" },
+  { label: "Ригельный кирпич", href: "/catalog/rigelnyj-kirpich" },
+  { label: "Клинкерные ступени", href: "/catalog/klinkernye-stupeni" },
 ];
 
 const infoLinks = [
-  { label: "О компании", href: "/td-skriabin-v3/about" },
-  { label: "Доставка и оплата", href: "/td-skriabin-v3/delivery" },
-  { label: "Калькулятор", href: "/td-skriabin-v3/calculator" },
-  { label: "Бренды", href: "/td-skriabin-v3/brands" },
-  { label: "Контакты", href: "/td-skriabin-v3/contacts" },
+  { label: "О компании", href: "/about" },
+  { label: "Доставка и оплата", href: "/delivery" },
+  { label: "Калькулятор", href: "/calculator" },
+  { label: "Бренды", href: "/brands" },
+  { label: "Контакты", href: "/contacts" },
 ];
 
 export default function Footer() {

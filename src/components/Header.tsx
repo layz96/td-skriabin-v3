@@ -5,22 +5,19 @@ import Link from "next/link";
 import RequestModal from "./RequestModal";
 
 const navItems = [
-  { label: "Каталог", href: "/td-skriabin-v3/catalog", hasDropdown: true },
-  { label: "Бренды", href: "/td-skriabin-v3/brands" },
-  { label: "Калькулятор", href: "/td-skriabin-v3/calculator" },
-  { label: "О компании", href: "/td-skriabin-v3/about" },
-  { label: "Доставка", href: "/td-skriabin-v3/delivery" },
-  { label: "Контакты", href: "/td-skriabin-v3/contacts" },
+  { label: "Каталог", href: "/catalog", hasDropdown: true },
+  { label: "Бренды", href: "/brands" },
+  { label: "Калькулятор", href: "/calculator" },
+  { label: "О компании", href: "/about" },
+  { label: "Доставка", href: "/delivery" },
+  { label: "Контакты", href: "/contacts" },
 ];
 
 const catalogDropdown = [
-  { label: "Облицовочный кирпич", href: "/td-skriabin-v3/catalog/oblicovochnyj-kirpich" },
-  { label: "Клинкерная брусчатка", href: "/td-skriabin-v3/catalog/klinkernaya-bruschatka" },
-  { label: "Фасадная плитка", href: "/td-skriabin-v3/catalog/fasadnaya-plitka" },
-  { label: "Клинкерная черепица", href: "/td-skriabin-v3/catalog/klinkernaya-cherepica" },
-  { label: "Кирпич ручной формовки", href: "/td-skriabin-v3/catalog/kirpich-ruchnoj-formovki" },
-  { label: "Ригельный кирпич", href: "/td-skriabin-v3/catalog/rigelnyj-kirpich" },
-  { label: "Клинкерные ступени", href: "/td-skriabin-v3/catalog/klinkernye-stupeni" },
+  { label: "Кирпич", href: "/catalog/kirpich" },
+  { label: "Плитка", href: "/catalog/plitka" },
+  { label: "Ригель", href: "/catalog/rigel" },
+  { label: "Брусчатка", href: "/catalog/bruschatka" },
 ];
 
 export default function Header() {
@@ -47,7 +44,7 @@ export default function Header() {
         <div className="bg-brand-dark">
           <div className="container-main flex items-center justify-between h-[90px]">
             {/* Logo */}
-            <Link href="/td-skriabin-v3" className="flex items-center gap-3 shrink-0 transition-transform duration-200 hover:scale-[1.02]">
+            <Link href="/" className="flex items-center gap-3 shrink-0 transition-transform duration-200 hover:scale-[1.02]">
               <div className="w-[48px] h-[48px] rounded-full bg-brand-accent flex items-center justify-center">
                 <span className="text-white font-bold text-xl">CK</span>
               </div>

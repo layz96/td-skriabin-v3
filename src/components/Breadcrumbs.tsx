@@ -15,7 +15,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
       <ol className="flex items-center flex-wrap gap-1.5 text-sm">
         <li>
           <Link
-            href="/td-skriabin-v3"
+            href="/"
             className="text-neutral-400 hover:text-brand-accent transition-colors"
           >
             Главная

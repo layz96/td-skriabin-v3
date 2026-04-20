@@ -12,7 +12,7 @@ const slides = [
       "Более 300 позиций облицовочного кирпича, брусчатки и фасадной плитки от ведущих производителей",
     image: "/td-skriabin-v3/images/prod-1.jpg",
     cta: "Перейти в каталог",
-    href: "/td-skriabin-v3/catalog",
+    href: "/catalog",
   },
   {
     accent: "Фасадные",
@@ -21,7 +21,7 @@ const slides = [
       "Облицовочный кирпич, плитка и черепица для создания неповторимого архитектурного образа",
     image: "/td-skriabin-v3/images/prod-6.jpg",
     cta: "Подобрать материал",
-    href: "/td-skriabin-v3/catalog/oblicovochnyj-kirpich",
+    href: "/catalog/oblicovochnyj-kirpich",
   },
   {
     accent: "Клинкерная",
@@ -30,7 +30,7 @@ const slides = [
       "Надежные и долговечные решения для мощения дорожек, террас и входных групп",
     image: "/td-skriabin-v3/images/prod-7.jpg",
     cta: "Смотреть брусчатку",
-    href: "/td-skriabin-v3/catalog/klinkernaya-bruschatka",
+    href: "/catalog/klinkernaya-bruschatka",
   },
 ];
 

@@ -12,7 +12,7 @@ import { brands, products } from "@/data/products";
 const stats = [
   { value: "5+", label: "лет на рынке" },
   { value: "6", label: "брендов" },
-  { value: "300+", label: "товаров" },
+  { value: "180+", label: "товаров" },
   { value: "1000+", label: "заказов" },
   { value: "3", label: "шоурума" },
 ];
@@ -98,7 +98,7 @@ export default function HomePage() {
             {brands.map((brand, idx) => (
               <ScrollReveal key={brand.slug} direction="up" delay={idx * 0.1}>
                 <Link
-                  href={`/td-skriabin-v3/brands`}
+                  href={`/brands/${brand.slug}`}
                   className="brand-card group flex flex-col items-center justify-center p-6 border border-neutral-100 rounded-xl hover:border-brand-accent/30 hover:shadow-md"
                 >
                   <div className="w-16 h-16 rounded-full bg-brand-light flex items-center justify-center mb-3 group-hover:bg-brand-accent/10 transition-colors duration-200">
@@ -109,7 +109,6 @@ export default function HomePage() {
                   <span className="text-sm font-medium text-brand-text text-center leading-tight">
                     {brand.name}
                   </span>
-                  <span className="text-xs text-neutral-400 mt-1">{brand.country}</span>
                 </Link>
               </ScrollReveal>
             ))}
